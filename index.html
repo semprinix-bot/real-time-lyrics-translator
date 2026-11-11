@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real Time Lyrics Translator</title>
+<meta name="description" content="Learn languages through music: synced lyrics of the song playing on Spotify, with a translation under every line.">
+<meta name="theme-color" content="#121212">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="track">
+    <img id="cover" alt="" hidden>
+    <div>
+      <div id="title" data-i18n="noTrack">No track playing</div>
+      <div id="artist" class="muted" data-i18n="connectOrSearch">Connect Spotify or search for a song</div>
+    </div>
+  </div>
+  <div class="controls">
+    <select id="lang" data-i18n-title="translateInto"></select>
+    <button id="settingsBtn" data-i18n-title="settings">⚙</button>
+  </div>
+</header>
+
+<section id="settings" hidden>
+  <h2 data-i18n="appLanguage">App language</h2>
+  <div class="row">
+    <select id="uiLang"></select>
+  </div>
+
+  <h2>Spotify</h2>
+  <p class="muted" data-i18n-html="spotifyIntro"></p>
+  <ol class="muted steps">
+    <li data-i18n-html="step1"></li>
+    <li data-i18n-html="step2"></li>
+    <li data-i18n-html="step3"></li>
+  </ol>
+  <div class="row">
+    <input id="clientId" data-i18n-ph="clientIdPh" spellcheck="false" dir="ltr">
+    <button id="loginBtn" data-i18n="connect">Connect Spotify</button>
+    <button id="logoutBtn" class="ghost" data-i18n="disconnect" hidden>Disconnect</button>
+  </div>
+
+  <h2 data-i18n="manualSearch">Manual search</h2>
+  <p class="muted" data-i18n="manualIntro"></p>
+  <div class="row">
+    <input id="manualArtist" data-i18n-ph="artist">
+    <input id="manualTitle" data-i18n-ph="title">
+    <button id="manualBtn" data-i18n="load">Load</button>
+  </div>
+
+  <h2 data-i18n="sync">Sync</h2>
+  <div class="row">
+    <label for="offset"><span data-i18n="offset">Lyrics offset</span>: <span id="offsetVal" dir="ltr">0.0</span> s</label>
+    <input id="offset" type="range" min="-3" max="3" step="0.1" value="0">
+  </div>
+  <label class="check"><input type="checkbox" id="showOriginal" checked> <span data-i18n="showOriginal">Show original lyrics</span></label>
+  <p class="muted credits"><span data-i18n="tip"></span><br><span data-i18n-html="credits"></span></p>
+</section>
+
+<main id="lyrics">
+  <p class="placeholder" data-i18n="placeholder"></p>
+</main>
+
+<footer>
+  <div id="manualBar" hidden>
+    <button id="playPause" data-i18n-title="playPause">▶</button>
+    <span id="clock" dir="ltr">0:00</span>
+  </div>
+  <span id="status" class="muted"></span>
+</footer>
+
+<div id="wordPop" hidden></div>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
